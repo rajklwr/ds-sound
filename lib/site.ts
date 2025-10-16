@@ -2,12 +2,12 @@ export const site = {
   name: "DS Sound",
   tagline: "Premium Sound • Lights • DJ • Stage • Roadshow",
   location: "Silchar, Assam",
-  phone: "+91-98765-43210",
-  email: "book@dssound.in",
+  phone: "+91-97062-09980",
+  email: "dhansahani.123@gmail.com",
   socials: {
-    instagram: "#",
-    facebook: "#",
-    youtube: "#",
+    instagram: "https://www.instagram.com/dssoundsilchar/",
+    facebook: "https://www.facebook.com/profile.php?id=100063802698065",
+    youtube: "https://www.youtube.com/channel/UCtre7w45v0RMbVy-mNlhapw",
   },
   nav: [
     { name: "Home", href: "/" },
