@@ -12,3 +12,12 @@ body {
   padding-right: 10px;
   @apply bg-slate-950 text-white antialiased;
 }
+
+/* Hide scrollbar (for testimonials carousel etc.) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

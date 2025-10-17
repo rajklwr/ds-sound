@@ -1,23 +1,30 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { CallBtn } from "@/components/ui/call-btn";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const readablePhone = (site.phone || "").replace(/^\+91-?/, "+91 ");
 
   return (
     <footer className="relative mt-20">
-      {/* soft top glow (non-interactive, doesn't block clicks) */}
+      {/* soft top glow */}
       <div className="pointer-events-none absolute -top-5 left-0 right-0 h-6 bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,.18),transparent_60%)]" />
 
       <div className="border-t border-white/10 bg-white/[.04] backdrop-blur">
         <div className="container py-10">
-          {/* Mobile: 1 col, centered. sm: 2 cols. md+: 4 cols, left aligned */}
+          {/* headline stripe */}
+          <div className="mx-auto mb-8 w-fit rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-medium text-emerald-300">
+            Professional Sound • Lights • DJ • Stage
+          </div>
+
+          {/* grid */}
           <div className="grid gap-8 text-center sm:grid-cols-2 md:grid-cols-4 md:text-left">
             {/* Brand + Tagline */}
             <section className="space-y-3">
               <h3 className="text-base md:text-lg font-semibold tracking-wide">{site.name}</h3>
               <p className="text-white/70 text-sm leading-relaxed">{site.tagline}</p>
-              <p className="text-white/50 text-sm">{site.location}</p>
+              {site.location && <p className="text-white/50 text-sm">{site.location}</p>}
 
               {/* Socials */}
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
@@ -50,12 +57,9 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <Link href="/quote" className="hover:text-white transition">
-                    Get a Quote
-                  </Link>
-                </li>
               </ul>
+              {/* subtle divider */}
+              <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             </section>
 
             {/* Services snapshot */}
@@ -69,6 +73,8 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
+              {/* accent underline */}
+              <div className="mt-4 h-1 w-12 rounded-full bg-[linear-gradient(90deg,transparent,rgba(34,197,94,.6),transparent)] mx-auto md:mx-0" />
             </section>
 
             {/* Contact / CTA */}
@@ -79,7 +85,7 @@ export default function Footer() {
                   <p>
                     Phone:{" "}
                     <a className="hover:text-white underline/30 hover:underline" href={`tel:${site.phone}`}>
-                      {site.phone}
+                      {readablePhone || site.phone}
                     </a>
                   </p>
                 )}
@@ -94,14 +100,11 @@ export default function Footer() {
                 <p>Available 24/7 across Assam.</p>
               </div>
 
-              {/* High-contrast CTA: Full width on mobile, centered */}
-              <div className="mt-4">
-                <Link
-                  href="/quote"
-                  className="inline-flex w-full sm:w-auto sm:min-w-[12rem] items-center justify-center rounded-2xl bg-brand-accent px-6 py-3 text-base font-bold text-slate-900 shadow-[0_0_30px_rgba(34,197,94,.25)] ring-1 ring-black/10 hover:opacity-95 active:opacity-90 transition mx-auto"
-                >
-                  Book Now
-                </Link>
+              {/* Primary CTA: Call Now */}
+              <div className="mt-4 flex justify-center md:justify-start">
+                <CallBtn className="w-full sm:w-auto sm:min-w-[12rem] px-6 py-3 text-base font-semibold">
+                  Call Now {readablePhone && `– ${readablePhone}`}
+                </CallBtn>
               </div>
             </section>
           </div>
@@ -109,24 +112,25 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10">
-          <div className="container flex flex-col gap-3 py-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between text-center md:text-left">
-            <p>© {year} {site.name}. All rights reserved.</p>
-            <p className="flex items-center justify-center md:justify-end gap-2">
-              <span className="inline-block h-1 w-10 rounded-full bg-[linear-gradient(90deg,transparent,rgba(34,197,94,.6),transparent)]" />
-              Made with passion in Silchar, Assam
+          <div className="container flex flex-col items-center gap-2 py-5 text-xs text-white/60 md:flex-row md:justify-between">
+            {/* keep together on laptops */}
+            <p className="md:whitespace-nowrap">
+              © {year} {site.name} · All rights reserved.
+            </p>
+            <p className="text-white/60">
+              Website by <span className="text-white/80">Grogrip Media Pvt Limited</span>
             </p>
           </div>
         </div>
       </div>
 
-      {/* bottom glow (non-blocking) */}
+      {/* bottom glow */}
       <div className="pointer-events-none absolute inset-x-0 -bottom-12 h-20 bg-[radial-gradient(ellipse_at_bottom,rgba(34,197,94,.14),transparent_60%)]" />
     </footer>
   );
 }
 
 /* ---------- helpers ---------- */
-
 function Social({
   href,
   label,
@@ -136,7 +140,6 @@ function Social({
   label: string;
   children: React.ReactNode;
 }) {
-  // Bigger tap targets + strong contrast on dark
   const classes =
     "inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white/90 hover:bg-white/15 hover:text-white transition";
   if (!href || href === "#") {
