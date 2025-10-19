@@ -16,28 +16,31 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 pt-16 pb-12 md:pt-28 md:pb-20">
-        {/* Badges */}
+        {/* Badges (added locality & hire intent) */}
         <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-5 flex flex-wrap items-center justify-center gap-2 text-xs">
           <Badge>Silchar • Assam-wide</Badge>
-          <Badge>Roadshow • Stage • Corporate</Badge>
-          <Badge>24/7 Support</Badge>
+          <Badge>Sound system on hire • Roadshow</Badge>
+          <Badge>Stage lighting • DJ • 24/7</Badge>
         </motion.div>
 
-        {/* Headline */}
+        {/* H1 — exact match once */}
         <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center text-4xl font-bold tracking-tight md:text-6xl">
-          <span className="text-white">Best-in-Assam </span>
-          <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">Sound &amp; Lights</span>
+          <span className="text-white">Best Sound System in Silchar</span>
+          <span className="text-white"> — </span>
+          <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">DS Sound</span>
         </motion.h1>
 
+        {/* First paragraph — variants, natural tone */}
         <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.7 }} className="mx-auto mt-4 max-w-2xl text-center text-white/70 md:text-lg">
-          DS Sound delivers powerful, crystal-clear audio, dramatic lighting and expert operators for roadshows, stage programs and corporate events across Assam.
+          Book professional <strong className="text-white">sound system on hire in Silchar</strong> with DS Sound — crystal-clear audio, powerful bass, expert operators, and dramatic stage lighting for roadshows, weddings, corporate shows, and concerts across Assam.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs — you can keep both, but call-first helps conversions & local SEO intent */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="mx-auto mt-8 flex w-full max-w-xl flex-col items-center justify-center gap-3 sm:flex-row">
+          {/* If you prefer call-only across site, remove the Btn below */}
           <Btn href="/quote" className="w-full sm:w-auto">Get a Quote</Btn>
           <Link href={`tel:${site.phone}`} className="inline-flex w-full items-center justify-center rounded-2xl bg-white/10 px-5 py-3 text-sm font-medium text-white hover:bg-white/15 sm:w-auto">
-            Call {readablePhone(site.phone)}
+            Call for Best Sound System in Silchar {readablePhone(site.phone)}
           </Link>
         </motion.div>
 
@@ -50,10 +53,10 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Marquee */}
+      {/* Marquee — added one keyword phrase naturally */}
       <Marquee />
 
-      {/* Scroll hint (click to smooth scroll) */}
+      {/* Scroll hint */}
       <div className="relative z-10 mt-8 mb-4 flex justify-center">
         <button
           type="button"
@@ -89,10 +92,21 @@ function StarRow() {
     </span>
   );
 }
+
+/* keep helpers */
 function readablePhone(p?: string) { return p ? p.replace(/^\+91-?/, "+91 ") : "Now"; }
 
 function Marquee() {
-  const items = ["Roadshow","Stage Programs","Corporate Events","Lighting & Truss","DJ & Console","Perfect Operators","Assam’s Best"];
+  const items = [
+    "Best Sound System in Silchar",  // added keyword once
+    "Roadshow",
+    "Stage Programs",
+    "Corporate Events",
+    "Lighting & Truss",
+    "DJ & Console",
+    "Perfect Operators",
+    "Assam’s Best",
+  ];
   return (
     <div className="relative z-10 border-y border-white/10 bg-white/[.04] py-3">
       <motion.div className="flex gap-8 whitespace-nowrap text-white/75" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 18, ease: "linear", repeat: Infinity }}>

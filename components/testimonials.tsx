@@ -42,7 +42,7 @@ const reviews: Review[] = [
 
 export default function Testimonials() {
   return (
-    <section className="container py-16">
+    <section id="testimonials" className="container py-16">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
           What Our Clients Say

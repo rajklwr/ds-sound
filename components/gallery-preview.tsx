@@ -87,7 +87,7 @@ function ReelCard({ src }: { src: string }) {
   };
 
   return (
-    <div className="relative">
+    <section id="gallery" className="relative">
       {/* 9:16 area */}
       <div className="relative w-full aspect-[9/16] bg-black">
         <video
@@ -136,7 +136,7 @@ function ReelCard({ src }: { src: string }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

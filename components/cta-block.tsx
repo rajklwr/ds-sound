@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export default function CtaBlock() {
   return (
-    <section className="relative overflow-hidden py-20">
+    <section id="contact" className="relative overflow-hidden py-20">
       {/* ambient lighting + grid */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,.18),transparent_70%)]" />
